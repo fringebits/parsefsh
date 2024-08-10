@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g -std=gnu99 -DHAVE_VLOG
+CC = cl
+CFLAGS = -Wall -DHAVE_VLOG
 LDLIBS = -lm
 VERSION = 1.1
 DISTDIR = parsefsh-$(VERSION)

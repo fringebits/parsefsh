@@ -16,19 +16,19 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <errno.h>
 #include <time.h>
 #include <string.h>
 #include <sys/types.h>
-#include <sys/mman.h>
+//#include <sys/mman.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 
 #include "admfunc.h"
 
 
-#define vlog(x...) fprintf(stderr, ## x)
+#define vlog(...) fprintf(stderr,  ##__VA_ARGS__)
 #define TBUFLEN 64
 
 //#define DEBUG
@@ -36,7 +36,8 @@
 
 int write_subfile(const void *fbase, const adm_fat_t *af, const char *dir, unsigned blocksize)
 {
-   char name[strlen(dir) + 14];
+   char name[2048]; //strlen(dir) + 14];  #bugbug
+
    int i, outfd,     // output file descriptor
        fat_cnt,      // fat block counter
        len;          // length actually written, returned by write()

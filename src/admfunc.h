@@ -36,7 +36,16 @@
 #define ADM_DEPTH_NA 0x69045951
 
 
-typedef struct adm_header
+#ifdef __GNUC__
+#define PACK(__Declaration__) __Declaration__ __attribute__((__packed__))
+#endif
+
+#ifdef _MSC_VER
+#define PACK(__Declaration__)                                                  \
+  __pragma(pack(push, 1)) __Declaration__ __pragma(pack(pop))
+#endif
+
+PACK(struct adm_header_t
 {
    char xor_byte;
    char null0[7];
@@ -70,9 +79,9 @@ typedef struct adm_header
    uint8_t blocksize_e2;
    uint16_t q;
    char map_name[31];
-} __attribute__((packed)) adm_header_t;
+});
 
-typedef struct adm_partition
+PACK(struct adm_partition_t
 {
    char boot;
    uint8_t start_head;
@@ -84,9 +93,9 @@ typedef struct adm_partition
    uint8_t end_cyl;
    uint32_t rel_secs;
    uint32_t num_secs;
-} __attribute__((packed)) adm_partition_t;
+});
 
-typedef struct adm_fat
+PACK(struct adm_fat_t
 {
    char subfile;           //<! 1 in real subfiles
    char sub_name[8];
@@ -96,8 +105,8 @@ typedef struct adm_fat
                              this is 0 in the first block and increments by 256
                              in each following block. */
    char y[14];
-   uint16_t blocks[];
-} __attribute__((packed)) adm_fat_t;
+   uint16_t blocks[1];     // declare at least ONE 'block'
+});
 
 //! name field
 #define DESC_TYPE_NAME 0x2c
@@ -116,14 +125,14 @@ typedef struct adm_fat
 //! temperature
 #define DESC_TYPE_TEMP 0xf9
 
-typedef struct adm_descriptor
+PACK(struct adm_descriptor_t
 {
    uint8_t type;              //<! descriptor type
    char a;                 //<! unknown, always 1
    uint16_t size;          //<! number of bytes of described element
-} __attribute__((packed)) adm_descriptor_t;
+});
 
-typedef struct adm_trk_header
+PACK(struct adm_trk_header
 {
    uint16_t hl;            //<! 0x000 common header length, = 0
    uint32_t len;           //<! 0x002 total length (including this header + trk_header2 + all trackpoints)
@@ -138,16 +147,16 @@ typedef struct adm_trk_header
    uint32_t data_desc_tbl_entries;  //!< number of entries in data descriptor table
    uint32_t start_hdr;              //!< pointer to first header
    uint32_t e;                      //!< how many blocks of data? usually 1?
-} __attribute__((packed)) adm_trk_header_t;
+});
 
-typedef struct adm_trk_trailer
+PACK(struct adm_trk_trailer_t
 {
    uint16_t a;             //!< always 0x0001
    uint32_t b;             //!< always 0x0000000a
    uint32_t c;             //!< unknown, checksum?
-} __attribute__((packed)) adm_trk_trailer_t;
+});
 
-typedef struct adm_track_point
+PACK(struct adm_track_point_t
 {
    int32_t lat;         /*<! latitude and longitude linearly scaled by
                           ADM_LAT_SCALE and ADM_LON_SCALE */
@@ -158,5 +167,4 @@ typedef struct adm_track_point
                           with the second one being the depth */
    char d;              //<! 0 or 1 at first point
    int32_t tempr;       //<! temperature
-} __attribute__((packed)) adm_track_point_t; 
-
+});
