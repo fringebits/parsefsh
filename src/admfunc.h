@@ -23,7 +23,6 @@
 
 #include <inttypes.h>
 
-
 #define MAX_FAT_BLOCKLIST 240
 #define FAT_SIZE 0x200
 
@@ -34,6 +33,9 @@
 #define ADM_DEPTH_K 22137.4773584905
 #define ADM_DEPTH(x) (((x) - ADM_DEPTH_D) / ADM_DEPTH_K)
 #define ADM_DEPTH_NA 0x69045951
+
+
+#define BYTE_OFFSET(__type, __base, __offset) (__type*)((uint8_t*)(__base) + (size_t)(__offset))
 
 
 #ifdef __GNUC__

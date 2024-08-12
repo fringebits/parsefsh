@@ -26,6 +26,12 @@
     <ClInclude Include="src\admfunc.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="helpers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\splitimg.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Makefile">
