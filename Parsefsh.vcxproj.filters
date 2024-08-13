@@ -33,6 +33,9 @@
     <ClCompile Include="src\helix\util_filename.cpp">
       <Filter>Source Files\helix</Filter>
     </ClCompile>
+    <ClCompile Include="src\parsewpt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\admfunc.h">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="src\helix\util_filename.h">
       <Filter>Source Files\helix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsewpt.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

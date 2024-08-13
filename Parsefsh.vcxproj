@@ -131,6 +131,7 @@
     <ClCompile Include="src\helix\util_filename.cpp" />
     <ClCompile Include="src\helix\util_string.cpp" />
     <ClCompile Include="src\parsetrk.cpp" />
+    <ClCompile Include="src\parsewpt.cpp" />
     <ClCompile Include="src\splitimg.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="src\helix\util_string.h" />
     <ClInclude Include="src\helpers.h" />
     <ClInclude Include="src\parsetrk.h" />
+    <ClInclude Include="src\parsewpt.h" />
     <ClInclude Include="src\splitimg.h" />
   </ItemGroup>
   <ItemGroup>
