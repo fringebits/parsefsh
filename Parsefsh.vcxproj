@@ -128,11 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Parsefsh.cpp" />
+    <ClCompile Include="src\getopt.c" />
+    <ClCompile Include="src\helix\util_filename.cpp" />
+    <ClCompile Include="src\helix\util_string.cpp" />
+    <ClCompile Include="src\parsetrk.cpp" />
     <ClCompile Include="src\splitimg.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="helpers.h" />
     <ClInclude Include="src\admfunc.h" />
+    <ClInclude Include="src\getopt.h" />
+    <ClInclude Include="src\helix\cmdline.h" />
+    <ClInclude Include="src\helix\util_filename.h" />
+    <ClInclude Include="src\helix\util_string.h" />
+    <ClInclude Include="src\helpers.h" />
+    <ClInclude Include="src\parsetrk.h" />
     <ClInclude Include="src\splitimg.h" />
   </ItemGroup>
   <ItemGroup>

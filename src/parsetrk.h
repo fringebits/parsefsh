@@ -16,17 +16,20 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-//#include <unistd.h>
 #include <errno.h>
 #include <time.h>
 #include <string.h>
 #include <sys/types.h>
-//#include <sys/mman.h>
 #include <sys/stat.h>
-#include <fcntl.h>
+#include <math.h>
 
 #include "admfunc.h"
 
+enum OutputFormat
+{
+    FMT_CSV, 
+    FMT_OSM, 
+    FMT_GPX
+};
 
-int SplitImage(int argc, char **argv);
-//int write_subfile(const void* fbase, const adm_fat_t* af, const char* dir, unsigned blocksize);
+void ParseTrack(void* fbase, OutputFormat format = FMT_OSM);

@@ -21,6 +21,8 @@
  *  @author Bernhard R. Fischer
  */
 
+ #pragma once
+
 #include <inttypes.h>
 
 #define MAX_FAT_BLOCKLIST 240
@@ -34,9 +36,10 @@
 #define ADM_DEPTH(x) (((x) - ADM_DEPTH_D) / ADM_DEPTH_K)
 #define ADM_DEPTH_NA 0x69045951
 
-
 #define BYTE_OFFSET(__type, __base, __offset) (__type*)((uint8_t*)(__base) + (size_t)(__offset))
 
+#define vlog(...) fprintf(stderr,  ##__VA_ARGS__)
+#define TBUFLEN 64
 
 #ifdef __GNUC__
 #define PACK(__Declaration__) __Declaration__ __attribute__((__packed__))
@@ -99,15 +102,15 @@ PACK(struct adm_partition_t
 
 PACK(struct adm_fat_t
 {
-   char subfile;           //<! 1 in real subfiles
+   char subfile;            //<! 1 in real subfiles
    char sub_name[8];
    char sub_type[3];
    uint32_t sub_size;
-   uint16_t next_fat;      /*<! not sure if this starts 1 byte later,
+   uint16_t next_fat;       /*<! not sure if this starts 1 byte later,
                              this is 0 in the first block and increments by 256
                              in each following block. */
    char y[14];
-   uint16_t blocks[1];     // declare at least ONE 'block'
+   uint16_t blocks[1];      // declare at least ONE 'block' (but this can be greater than one)
 });
 
 //! name field
@@ -134,7 +137,7 @@ PACK(struct adm_descriptor_t
    uint16_t size;          //<! number of bytes of described element
 });
 
-PACK(struct adm_trk_header
+PACK(struct adm_trk_header_t
 {
    uint16_t hl;            //<! 0x000 common header length, = 0
    uint32_t len;           //<! 0x002 total length (including this header + trk_header2 + all trackpoints)

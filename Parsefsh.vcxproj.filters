@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\helix">
+      <UniqueIdentifier>{7d74ef52-e77c-495b-9f82-16646f51e865}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parsefsh.cpp">
@@ -21,16 +24,43 @@
     <ClCompile Include="src\splitimg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\parsetrk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\getopt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helix\util_string.cpp">
+      <Filter>Source Files\helix</Filter>
+    </ClCompile>
+    <ClCompile Include="src\helix\util_filename.cpp">
+      <Filter>Source Files\helix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\admfunc.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="helpers.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\splitimg.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\getopt.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helpers.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parsetrk.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helix\cmdline.h">
+      <Filter>Source Files\helix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helix\util_string.h">
+      <Filter>Source Files\helix</Filter>
+    </ClInclude>
+    <ClInclude Include="src\helix\util_filename.h">
+      <Filter>Source Files\helix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
