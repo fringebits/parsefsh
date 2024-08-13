@@ -1,20 +1,4 @@
-/* Copyright 2013 Bernhard R. Fischer, 2048R/5C5FFD47 <bf@abenteuerland.at>
- *
- * This file is part of Parseadm.
- *
- * Parseadm is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, version 3 of the License.
- *
- * Parseadm is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Parsefsh. If not, see <http://www.gnu.org/licenses/>.
- */
- 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -26,6 +10,15 @@
 
 #include "parsewpt.h"
 #include "admfunc.h"
+
+
+// parsewpt
+
+// header 7 * 16 - 3
+
+// waypoint (4 * 16 + 6) = 70b??
+// char[10] name
+// char[20] description
 
 namespace {
 
