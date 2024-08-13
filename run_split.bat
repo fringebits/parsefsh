@@ -1,0 +1,1 @@
+x64\Debug\Parsefsh.exe --input "K:\Cloud\Dropbox (Personal)\Gps\Catalog\garmin-8612xsv\MOLLYANN.ADM"

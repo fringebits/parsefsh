@@ -11,11 +11,10 @@
 
 int main(int argc, char **argv)
 {
-
     cmdline::parser a;
 
     a.add<std::string>("input", 'i', "input", true, "");
-    a.add<std::string>("output", 'o', "output", false, "./");
+    a.add<std::string>("output", 'o', "output", false, "."); // default is the current path
 
     a.parse_check(argc, argv);
 
@@ -28,21 +27,37 @@ int main(int argc, char **argv)
     
     if (ext == "adm")
     {
+        SplitImage(buffer, a.get<std::string>("output"));
+        return 0;
+    }
+
+    if (ext == "agp")
+    {
+        // to be implemented
+    }
+
+    if (ext == "bdy")
+    {
+        // to be implemented
     }
 
     if (ext == "rte")
     {
+        // to be implemented
     }
 
     if (ext == "trk")
     {
+        ParseTrack(buffer);
+        return 0;
     }
 
     if (ext == "wpt")
     {
+        // to be implemented
+        return 0;
     }
 
-    ParseTrack(&buffer[0], FMT_OSM);
+    return -1;
 
-    //splitImage(argc, argv);
 }

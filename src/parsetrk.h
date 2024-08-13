@@ -14,22 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with Parsefsh. If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <time.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <math.h>
 
-#include "admfunc.h"
+#pragma once
 
-enum OutputFormat
-{
-    FMT_CSV, 
-    FMT_OSM, 
-    FMT_GPX
-};
+#include <vector>
 
-void ParseTrack(void* fbase, OutputFormat format = FMT_OSM);
+void ParseTrack(const std::vector<uint8_t>& buffer);

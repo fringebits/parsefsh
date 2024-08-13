@@ -128,7 +128,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Parsefsh.cpp" />
-    <ClCompile Include="src\getopt.c" />
     <ClCompile Include="src\helix\util_filename.cpp" />
     <ClCompile Include="src\helix\util_string.cpp" />
     <ClCompile Include="src\parsetrk.cpp" />
@@ -136,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\admfunc.h" />
-    <ClInclude Include="src\getopt.h" />
     <ClInclude Include="src\helix\cmdline.h" />
     <ClInclude Include="src\helix\util_filename.h" />
     <ClInclude Include="src\helix\util_string.h" />

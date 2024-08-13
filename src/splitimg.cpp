@@ -17,6 +17,7 @@
 #include "splitimg.h"
 #include <cstdio>
 #include "helpers.h"
+#include "admfunc.h"
 
 int write_subfile(const void* fbase, const adm_fat_t* af, const char* dir, unsigned blocksize)
 {
@@ -94,24 +95,17 @@ int write_subfile(const void* fbase, const adm_fat_t* af, const char* dir, unsig
     return fat_cnt;
 }
 
-
-int SplitImage(int argc, char **argv)
+int SplitImage(const std::vector<uint8_t>& buffer, const std::string outputPath)
 {
    char ts[64];
    struct tm tm;
    int fd = 0;
    int blocksize;
-   void *fbase;
    int fat_cnt;
 
-   auto path = std::string(argv[1]);
-   std::vector<uint8_t> buffer;
+   const void* fbase = &buffer[0];
 
-   readBinaryFileToBuffer(path, buffer);
-
-   fbase = &buffer[0];
-
-   auto ah = static_cast<adm_header_t*>(fbase);
+   auto ah = static_cast<const adm_header_t*>(fbase);
    memset(&tm, 0, sizeof(tm));
    tm.tm_year = ah->creat_year - 1900;
    tm.tm_mon = ah->creat_month;
@@ -142,10 +136,10 @@ int SplitImage(int argc, char **argv)
                af->subfile, (int) sizeof(af->sub_name), af->sub_name,
                (int) sizeof(af->sub_type), af->sub_type, af->sub_size, af->next_fat);
 
-        auto folder = getFolderNameFromPath(path);
-
-         if ((fat_cnt = write_subfile(fbase, af, folder.c_str(), blocksize)) == -1)
+         if ((fat_cnt = write_subfile(fbase, af, outputPath.c_str(), blocksize)) == -1)
+         {
             perror("write_subfile()"), exit(1);
+         }
 
          af = BYTE_OFFSET(adm_fat_t, af, fat_cnt * FAT_SIZE);
       }

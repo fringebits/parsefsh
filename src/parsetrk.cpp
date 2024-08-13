@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Parsefsh. If not, see <http://www.gnu.org/licenses/>.
  */
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -23,6 +24,7 @@
 #include <sys/stat.h>
 #include <math.h>
 
+#include "parsetrk.h"
 #include "admfunc.h"
 
 enum OutputFormat
@@ -104,7 +106,7 @@ static long decode_int(void *ptr, int size)
    return val;
 }
 
-void parse_adm(const adm_trk_header_t *th, int format)
+void parse_adm(const adm_trk_header_t *th)
 {
    //adm_descriptor_t *desc;
    adm_track_point_t *tp = nullptr;
@@ -154,17 +156,19 @@ void parse_adm(const adm_trk_header_t *th, int format)
 
    for (unsigned i = 0; i < numtp; i++, tp++)
    {
-      switch (format)
-      {
-         case FMT_OSM:
-            output_osm_node(tp);
-            break;
+        output_node(tp);
 
-         case FMT_CSV:
-         default:
-            printf("%3d: ", i);
-            output_node(tp);
-      }
+      //switch (format)
+      //{
+      //   case FMT_OSM:
+      //      output_osm_node(tp);
+      //      break;
+
+      //   case FMT_CSV:
+      //   default:
+      //      printf("%3d: ", i);
+      //      output_node(tp);
+      //}
    }
 }
 
@@ -178,17 +182,8 @@ void usage(const char *arg0)
 
 }
 
-void ParseTrack(void* fbase, OutputFormat format)
+void ParseTrack(const std::vector<uint8_t>& buffer)
 {
-    if (format == FMT_OSM)
-    {
-        printf("<?xml version='1.0' encoding='UTF-8'?>\n<osm version='0.6' generator='parseadm'>\n");
-    }
-
-    parse_adm(static_cast<adm_trk_header_t*>(fbase), format);
-
-    if (format == FMT_OSM)
-    {
-        printf("</osm>\n");
-    }
+    auto header = reinterpret_cast<const adm_trk_header_t*>(&buffer[0]);
+    parse_adm(header);
 }

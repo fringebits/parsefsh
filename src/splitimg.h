@@ -14,19 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with Parsefsh. If not, see <http://www.gnu.org/licenses/>.
  */
-#include <stdio.h>
-#include <stdlib.h>
-//#include <unistd.h>
-#include <errno.h>
-#include <time.h>
-#include <string.h>
-#include <sys/types.h>
-//#include <sys/mman.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+////#include <unistd.h>
+//#include <errno.h>
+//#include <time.h>
+//#include <string.h>
+//#include <sys/types.h>
+////#include <sys/mman.h>
+//#include <sys/stat.h>
+//#include <fcntl.h>
 
-#include "admfunc.h"
+//#include "admfunc.h"
 
+#include <vector>
+#include <string>
 
-int SplitImage(int argc, char **argv);
+int SplitImage(const std::vector<uint8_t>& buffer, const std::string outputPath);
 //int write_subfile(const void* fbase, const adm_fat_t* af, const char* dir, unsigned blocksize);
