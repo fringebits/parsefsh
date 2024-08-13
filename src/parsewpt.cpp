@@ -19,6 +19,9 @@
 // waypoint (4 * 16 + 6) = 70b??
 // char[10] name
 // char[20] description
+// byte     unknown (always A4??)
+
+
 
 namespace {
 
