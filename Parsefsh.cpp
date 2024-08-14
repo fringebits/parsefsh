@@ -4,6 +4,7 @@
 #include <iostream>
 #include "src/splitimg.h"
 #include "src/parsetrk.h"
+#include "src/parsewpt.h"
 #include "src/helpers.h"
 #include "src/helix/cmdline.h"
 
@@ -54,7 +55,7 @@ int main(int argc, char **argv)
 
     if (ext == "wpt")
     {
-        // to be implemented
+        ParseWpt(buffer);
         return 0;
     }
 

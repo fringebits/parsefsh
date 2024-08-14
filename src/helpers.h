@@ -1,7 +1,21 @@
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <cstdint>
+
+//! Byte swap unsigned short
+inline uint16_t swap_uint16(uint16_t val) 
+{
+    return (val << 8) | (val >> 8 );
+}
+
+//! Byte swap short
+inline int16_t swap_int16(int16_t val) 
+{
+    return (val << 8) | ((val >> 8) & 0xFF);
+}
 
 inline bool readBinaryFileToBuffer(const std::string& filename, std::vector<uint8_t>& buffer) 
 {
